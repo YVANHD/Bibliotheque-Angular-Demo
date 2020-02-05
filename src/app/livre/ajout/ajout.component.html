@@ -1,0 +1,85 @@
+<hr class="line">
+<div class="container">
+    <div class="col-sm-8 col-sm-offset-s2">
+        <h3 class="text-center">Enregistrer un nouveau Livre</h3>
+        <hr class="line">
+        <form (ngSubmit) = "onSubmit()" class="thumbnail" #livreForm="ngForm">
+<!-- ngSubmit soumet le formulaire et ngForm declare une variable -->
+<!--  #livreForm permettant de vérifier la validité du formulaire -->
+<!-- ce pattern nous permet de definir les regles de validités du champs nom--> 
+ <!-- pristine: Jamais été modifié -->
+
+                    <div class="form-group col-sm-12">
+                        <label for="name">TITRE</label>
+                        <input id="name" type="text" name="name"
+                        pattern="^[a-zA-ZéèçÇÉÈ -]{2,50}$"
+                        class="form-control" [(ngModel)]="livre.name"
+                        #name="ngModel" required>
+                        
+                        <div [hidden] ="name.valid || name.pristine" class="text-danger">
+                            le titre est obligatoire: au plus 50 caractères
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label for="auteur">AUTEUR</label>
+                        <input id="auteur" type="text" name="auteur" 
+                        pattern="^[a-zA-ZéèçÇÉÈ -]{2,80}$"
+                        class="form-control" [(ngModel)]="livre.auteur"
+                        #auteur="ngModel" required>
+                        
+                        <div [hidden] ="auteur.valid || auteur.pristine"  class="text-danger">
+                            le nom d'auteur est obligatoire: au plus 80 caractères
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label for="description">DESCRIPTION</label>
+                        <textarea 
+                        id="description" type="text" name="description" 
+                        pattern="^[a-zA-ZéèçÇÉÈ -]{2,500}$"
+                        class="form-control" [(ngModel)]="livre.description"
+                        #description="ngModel" required>
+
+                        </textarea>
+                        
+                        <div [hidden] ="description.valid || description.pristine"  class="text-danger">
+                            la description est obligatoire
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label for="prix">PRIX</label>
+                        <input id="prix" type="number" name="prix" 
+                        pattern="^[1-9]{1,6}$"
+                        class="form-control" [(ngModel)]="livre.prix"
+                        #prix="ngModel" required>
+                        
+                        <div [hidden] ="prix.valid || prix.pristine" class="text-danger">
+                            le prix est obligatoire: au plus 6 caractères
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label for="image"> Url IMAGE</label>
+                        <input id="image" type="text" name="image" 
+                        class="form-control" [(ngModel)]="livre.image"
+                        #image="ngModel" required>
+                        
+                        <div [hidden] ="image.valid || image.pristine" class="text-danger">
+                            l'url image est obligatoire
+                        </div>
+                    </div>
+    
+                    <button routerLink="/listeLivres" type="submit" name="action" class="btn btn-default">
+                        <i class="glyphicon glyphicon-arrow-left left"></i>
+                        Retour
+                    </button>
+
+                    <button [disabled]= "livreForm.form.invalid" type="submit" name="action" class="btn btn-primary">Enrg.
+                        <i class="glyphicon glyphicon-cloud-download ">Save</i>
+                    </button>
+            </form>
+
+    </div>
+</div>

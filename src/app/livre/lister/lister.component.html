@@ -1,0 +1,39 @@
+<ul class="nav nav-tabs nav-justified">
+    <li role="presentation"><a>Bibliothèque</a></li>
+    <li role="presentation"><a routerLink="/single- ">...</a></li>
+    <li role="presentation"><a href="#">...</a></li>
+</ul>
+<hr class="line">
+<div class="col-sm-12 col-xs-12 ">
+    <div class="container" >
+        <div class="panel panel-success" *ngIf="livres">
+            <!-- Default panel contents -->
+            <div class="panel-heading content">Liste des livres</div>
+            <div class="panel-body">
+                <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum
+                    nulla sed
+                    consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam
+                    id dolor id
+                    nibh ultricies vehicula ut id elit.</p>
+            </div>
+            <!-- ngFor est une directive nous permettant de parcourir notre tableau de livres avec pour variable let livr -->
+            <div class="list-group" *ngFor="let livr of livres" >
+                <a font (click)="selectLivr(livr)" class="list-group-item thumbnail active col-md-4 col-sm-4" >
+                    <h4 class="list-group-item-heading">{{livr.auteur}}</h4>
+                    <p class="list-group-item-text">{{livr.name}}</p>
+                    <!-- <p class="list-group-item-text">{{livr.prix}} XAF</p> -->
+                    
+                        <button font href="#" class="btn btn-info pull-right" role="button"><span class="glyphicon glyphicon-plus"
+                                aria-hidden="true"></span></button>
+                        <button font (click)="deleteLivre(livr)" class="btn btn-warning pull-left" role="button"><span class="glyphicon glyphicon-minus"
+                                aria-hidden="true"></span></button>
+                      
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-12 spacer col-md-offset-3">
+
+</div>
